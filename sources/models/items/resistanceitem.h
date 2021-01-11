@@ -19,6 +19,8 @@ public:
     bool selected() const;
 
 public slots:
+    void onClicked();
+
     void setImage(QUrl image);
     void setSelected(bool selected);
 

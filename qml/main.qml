@@ -48,10 +48,24 @@ Window {
                 property real buttonSize: Math.min(resistanceView.width, resistanceView.height / resistanceView.count)
 
                 model: resistanceModel
-                delegate: Button {
-                    text: index
+                delegate: AbstractButton {
+                    id: resistanceButton
+
+                    property ResistanceItem resistanceItem: model.object
+
                     height: resistanceView.buttonSize
                     width: resistanceView.buttonSize
+
+                    text: index
+
+                    contentItem: Text {
+                        color: resistanceItem.selected ? "gold" : "red"
+                        text: resistanceButton.text
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                    }
+
+                    onClicked: resistanceItem.onClicked()
                 }
 
                 Layout.fillHeight: true

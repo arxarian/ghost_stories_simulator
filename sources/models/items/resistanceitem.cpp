@@ -23,6 +23,11 @@ bool ResistanceItem::selected() const
     return m_selected;
 }
 
+void ResistanceItem::onClicked()
+{
+    setSelected(!m_selected);
+}
+
 void ResistanceItem::setImage(QUrl image)
 {
     if (m_image == image)
