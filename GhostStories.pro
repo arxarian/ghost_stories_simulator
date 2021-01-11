@@ -3,10 +3,18 @@ TEMPLATE = app
 QT += qml quick
 CONFIG += c++11
 
-SOURCES += main.cpp
+SOURCES += \
+    sources/models/resistancemodel.cpp \
+    sources/models/items/resistanceitem.cpp \
+    sources/main.cpp
 
-RESOURCES += qml.qrc \
-    images.qrc
+HEADERS += \
+        sources/models/resistancemodel.h \
+        sources/models/items/resistanceitem.h
+
+RESOURCES += \
+    qml/qml.qrc \
+    images/images.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
