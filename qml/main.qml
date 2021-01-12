@@ -30,44 +30,17 @@ Window {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            Rectangle {
-                color: "gold"
+            TaoistView {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
             }
 
-            Rectangle {
-                color: "blue"
+            DiceView {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
             }
 
-            ListView {
-                id: resistanceView
-
-                property real buttonSize: Math.min(resistanceView.width, resistanceView.height / resistanceView.count)
-
-                model: resistanceModel
-                delegate: AbstractButton {
-                    id: resistanceButton
-
-                    property ResistanceItem resistanceItem: model.object
-
-                    height: resistanceView.buttonSize
-                    width: resistanceView.buttonSize
-
-                    text: index
-
-                    contentItem: Text {
-                        color: resistanceItem.selected ? "gold" : "red"
-                        text: resistanceButton.text
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                    }
-
-                    onClicked: resistanceItem.onClicked()
-                }
-
+            ResistanceView {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
             }

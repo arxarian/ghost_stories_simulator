@@ -5,12 +5,20 @@ CONFIG += c++11
 
 SOURCES += \
     sources/models/resistancemodel.cpp \
+    sources/models/dicemodel.cpp \
+    sources/models/taoistmodel.cpp \
     sources/models/items/resistanceitem.cpp \
+    sources/models/items/dieitem.cpp \
+    sources/models/items/taoistitem.cpp \
     sources/main.cpp
 
 HEADERS += \
-        sources/models/resistancemodel.h \
-        sources/models/items/resistanceitem.h
+    sources/models/resistancemodel.h \
+    sources/models/dicemodel.h \
+    sources/models/taoistmodel.h \
+    sources/models/items/resistanceitem.h \
+    sources/models/items/dieitem.h \
+    sources/models/items/taoistitem.h
 
 RESOURCES += \
     qml/qml.qrc \

@@ -4,12 +4,12 @@
 #include <QAbstractListModel>
 #include <QTimer>
 
-class ResistanceItem;
+class DieItem;
 
-class ResistanceModel : public QAbstractListModel
+class DiceModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(qint32 resitance READ resitance NOTIFY resitanceChanged)
+    Q_PROPERTY(qint32 dice READ dice NOTIFY diceChanged)
 
 public:
     enum Roles
@@ -18,7 +18,7 @@ public:
     };
     Q_ENUM(Roles)
 
-    ResistanceModel(QObject* parent = nullptr);
+    DiceModel(QObject* parent = nullptr);
 
     static void DeclareQml();
 
@@ -26,16 +26,18 @@ public:
     Q_INVOKABLE virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
     Q_INVOKABLE virtual QHash<int, QByteArray> roleNames() const override;
 
-    qint32 resitance() const;
+    //    Q_INVOKABLE bool enableExtraDie(bool enable);
+
+    qint32 dice() const;
 
 signals:
-    void resitanceChanged(qint32 resitance);
+    void diceChanged(qint32 resitance);
 
 private:
-    QList<ResistanceItem*> m_arrItems;
-    qint32 m_resitance = 0;
+    QList<DieItem*> m_arrItems;
+    qint32 m_dice = 0;
 
 private slots:
-    void setResitance(qint32 resitance);
+    void setDice(qint32 dice);
     void updateResistance();
 };

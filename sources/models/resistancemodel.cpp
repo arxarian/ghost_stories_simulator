@@ -4,12 +4,15 @@
 
 #include <QQmlEngine>
 
+constexpr qint32 MaxResistance = 3;
+
 ResistanceModel::ResistanceModel(QObject* parent) : QAbstractListModel(parent)
 {
-    m_arrItems.append(new ResistanceItem(this));
-    m_arrItems.append(new ResistanceItem(this));
-    m_arrItems.append(new ResistanceItem(this));
-    m_arrItems.append(new ResistanceItem(this));
+    for (qint32 i = 0; i < MaxResistance; ++i)
+    {
+        m_arrItems.append(new ResistanceItem(this));
+        connect(m_arrItems.last(), &ResistanceItem::selectedChanged, this, &ResistanceModel::updateResistance);
+    }
 }
 
 void ResistanceModel::DeclareQml()
@@ -33,10 +36,10 @@ QVariant ResistanceModel::data(const QModelIndex& index, int role) const
         return QVariant();
     }
 
-    ResistanceItem* pSubMenuItem = m_arrItems.at(index.row());
+    ResistanceItem* pItem = m_arrItems.at(index.row());
     if (role == Roles::ObjectRole)
     {
-        return QVariant::fromValue(pSubMenuItem);
+        return QVariant::fromValue(pItem);
     }
 
     return QVariant();
@@ -45,4 +48,32 @@ QVariant ResistanceModel::data(const QModelIndex& index, int role) const
 QHash<int, QByteArray> ResistanceModel::roleNames() const
 {
     return {{Roles::ObjectRole, "object"}};
+}
+
+qint32 ResistanceModel::resitance() const
+{
+    return m_resitance;
+}
+
+void ResistanceModel::setResitance(qint32 resitance)
+{
+    if (m_resitance == resitance)
+        return;
+
+    m_resitance = resitance;
+    emit resitanceChanged(m_resitance);
+}
+
+void ResistanceModel::updateResistance()
+{
+    qint32 resistance = 0;
+    for (ResistanceItem* item : m_arrItems)
+    {
+        if (item->selected())
+        {
+            ++resistance;
+        }
+    }
+
+    setResitance(resistance);
 }

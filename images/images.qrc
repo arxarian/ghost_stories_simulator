@@ -3,5 +3,6 @@
         <file>logo.png</file>
         <file>blueability.png</file>
         <file>blue_player.png</file>
+        <file>die_basic.png</file>
     </qresource>
 </RCC>

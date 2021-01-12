@@ -4,12 +4,11 @@
 #include <QAbstractListModel>
 #include <QTimer>
 
-class ResistanceItem;
+class TaoistItem;
 
-class ResistanceModel : public QAbstractListModel
+class TaoistModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(qint32 resitance READ resitance NOTIFY resitanceChanged)
 
 public:
     enum Roles
@@ -18,7 +17,7 @@ public:
     };
     Q_ENUM(Roles)
 
-    ResistanceModel(QObject* parent = nullptr);
+    TaoistModel(QObject* parent = nullptr);
 
     static void DeclareQml();
 
@@ -26,16 +25,11 @@ public:
     Q_INVOKABLE virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
     Q_INVOKABLE virtual QHash<int, QByteArray> roleNames() const override;
 
-    qint32 resitance() const;
-
 signals:
-    void resitanceChanged(qint32 resitance);
 
 private:
-    QList<ResistanceItem*> m_arrItems;
-    qint32 m_resitance = 0;
+    QList<TaoistItem*> m_arrItems;
 
 private slots:
-    void setResitance(qint32 resitance);
-    void updateResistance();
+    //
 };
