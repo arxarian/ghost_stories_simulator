@@ -50,7 +50,7 @@ Item {
                     contentItem: GlowingImage {
                         source: resistanceButton.resistanceItem.image
                         selected: resistanceButton.checked
-                        color: "#BB2222"
+                        color: "#CC1111"
                     }
 
                     onClicked: resistanceButton.resistanceItem.onClicked()
