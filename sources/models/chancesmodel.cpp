@@ -106,6 +106,12 @@ void ChancesModel::setPower(TaoistItem::Power power)
 
 void ChancesModel::updateChance()
 {
+    if (m_resistance == 0)
+    {
+        setChance(100.0);
+        return;
+    }
+
     const QMap<QString, qreal>& taoistChances = Chances.value(m_power);
     qreal chance                              = 0.0;
     if (taoistChances.contains(QString("%1/%2").arg(m_dice).arg(m_resistance)))

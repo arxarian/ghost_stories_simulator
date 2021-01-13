@@ -62,6 +62,31 @@ qint32 DiceModel::dice() const
     return m_dice;
 }
 
+bool DiceModel::extraDie() const
+{
+    return m_extraDie;
+}
+
+void DiceModel::setExtraDie(bool extraDie)
+{
+    if (m_extraDie == extraDie)
+        return;
+
+    m_extraDie = extraDie;
+    emit extraDieChanged(m_extraDie);
+
+    if (!m_extraDie)
+    {
+        for (DieItem* die : m_arrItems)
+        {
+            if (die->type() == DieItem::Type::Extra)
+            {
+                die->setSelected(false);
+            }
+        }
+    }
+}
+
 void DiceModel::setDice(qint32 dice)
 {
     if (m_dice == dice)

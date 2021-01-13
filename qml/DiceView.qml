@@ -43,48 +43,14 @@ Item {
                     height: wrapper.size
                     width: wrapper.size
 
-                    text: index
                     checked: diceButton.dieItem.selected
+                    visible: diceButton.dieItem.type == DieItem.Extra ? taoistModel.selectedTaoist.power == TaoistItem.StrengthOfTheMountain : true
 
-//                    background: Rectangle {
-////                        color: diceButton.dieItem.selected ? "gold" : "white"
-//                        radius: height / 2
-//                    }
-
-                    indicator: Rectangle {
-                        color: "red"
-                        radius: height / 2
+                    contentItem: GlowingImage {
+                        source: diceButton.dieItem.image
+                        selected: diceButton.dieItem.selected
+                        color: "#DDDDDD"
                     }
-
-                    contentItem: Item {
-                        Image {
-                            id: image
-                            anchors.fill: parent
-                            anchors.margins: parent.height * 0.2
-                            source: diceButton.dieItem.image
-                            smooth: true
-                            mipmap: true
-                            fillMode: Image.PreserveAspectFit
-                        }
-
-                        Glow {
-                            id: glow
-                            anchors.fill: image
-                            visible: diceButton.dieItem.selected
-                            radius: image.height * 0.3
-                            samples: 17
-                            color: "#1B84BD"
-                            source: image
-                            spread: 0.125
-                        }
-                    }
-
-                    //                    contentItem: Text {
-                    //                        color: diceButton.dieItem.selected ? "gold" : "red"
-                    //                        text: diceButton.text
-                    //                        horizontalAlignment: Text.AlignHCenter
-                    //                        verticalAlignment: Text.AlignVCenter
-                    //                    }
 
                     onClicked: diceButton.dieItem.onClicked()
                 }

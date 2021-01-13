@@ -26,8 +26,9 @@ int main(int argc, char* argv[])
 
     QObject::connect(resistanceModel, &ResistanceModel::resitanceChanged, chancesModel, &ChancesModel::setResistance);
     QObject::connect(diceModel, &DiceModel::diceChanged, chancesModel, &ChancesModel::setDice);
-    QObject::connect(taoistModel, &TaoistModel::selectedTaoistChanged, &engine, [chancesModel](TaoistItem* selectedTaoist) {
+    QObject::connect(taoistModel, &TaoistModel::selectedTaoistChanged, &engine, [chancesModel, diceModel](TaoistItem* selectedTaoist) {
         chancesModel->setPower(selectedTaoist->power());
+        diceModel->setExtraDie(selectedTaoist->power() == TaoistItem::Power::StrengthOfTheMountain);
     });
 
     chancesModel->setResistance(resistanceModel->resitance());
