@@ -39,5 +39,5 @@ private:
 
 private slots:
     void setDice(qint32 dice);
-    void updateResistance();
+    void updateDice();
 };

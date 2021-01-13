@@ -10,6 +10,8 @@ TaoistModel::TaoistModel(QObject* parent) : QAbstractListModel(parent)
     m_arrItems.append(new TaoistItem(TaoistItem::Power::SecondWind, this));
     m_arrItems.append(new TaoistItem(TaoistItem::Power::StrengthOfTheMountain, this));
     m_arrItems.append(new TaoistItem(TaoistItem::Power::GodsFavorite, this));
+
+    setSelectedTaoist(m_arrItems.first());
 }
 
 void TaoistModel::DeclareQml()
@@ -45,4 +47,18 @@ QVariant TaoistModel::data(const QModelIndex& index, int role) const
 QHash<int, QByteArray> TaoistModel::roleNames() const
 {
     return {{Roles::ObjectRole, "object"}};
+}
+
+TaoistItem* TaoistModel::selectedTaoist() const
+{
+    return m_selectedTaoist;
+}
+
+void TaoistModel::setSelectedTaoist(TaoistItem* selectedTaoist)
+{
+    if (m_selectedTaoist == selectedTaoist)
+        return;
+
+    m_selectedTaoist = selectedTaoist;
+    emit selectedTaoistChanged(m_selectedTaoist);
 }

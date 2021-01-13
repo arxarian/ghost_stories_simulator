@@ -14,10 +14,10 @@ class TaoistItem : public QObject
 public:
     enum Power
     {
-        Neutral,
-        SecondWind,
-        StrengthOfTheMountain,
-        GodsFavorite
+        Neutral,               // red, yellow
+        SecondWind,            // blue - complete reroll
+        StrengthOfTheMountain, // green - an extra die
+        GodsFavorite           // green - reroll of unfitting
     };
     Q_ENUM(Power)
 

@@ -29,6 +29,6 @@ signals:
     void selectedChanged(bool selected);
 
 private:
-    QUrl m_image;
+    QUrl m_image    = QUrl("qrc:/images/resistance.png");
     bool m_selected = false;
 };

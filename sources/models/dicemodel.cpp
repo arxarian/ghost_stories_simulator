@@ -11,11 +11,15 @@ DiceModel::DiceModel(QObject* parent) : QAbstractListModel(parent)
     for (qint32 i = 0; i < MaxDice; ++i)
     {
         m_arrItems.append(new DieItem(DieItem::Type::Basic, this));
-        connect(m_arrItems.last(), &DieItem::selectedChanged, this, &DiceModel::updateResistance);
+        connect(m_arrItems.last(), &DieItem::selectedChanged, this, &DiceModel::updateDice);
     }
 
+    m_arrItems.first()->setSelected(true);
+
     m_arrItems.append(new DieItem(DieItem::Type::Extra, this));
-    connect(m_arrItems.last(), &DieItem::selectedChanged, this, &DiceModel::updateResistance);
+    connect(m_arrItems.last(), &DieItem::selectedChanged, this, &DiceModel::updateDice);
+
+    updateDice();
 }
 
 void DiceModel::DeclareQml()
@@ -67,16 +71,16 @@ void DiceModel::setDice(qint32 dice)
     emit diceChanged(m_dice);
 }
 
-void DiceModel::updateResistance()
+void DiceModel::updateDice()
 {
-    qint32 resistance = 0;
+    qint32 dice = 0;
     for (DieItem* item : m_arrItems)
     {
         if (item->selected())
         {
-            ++resistance;
+            ++dice;
         }
     }
 
-    setDice(resistance);
+    setDice(dice);
 }

@@ -1,8 +1,12 @@
 <RCC>
     <qresource prefix="/images">
         <file>logo.png</file>
-        <file>blueability.png</file>
-        <file>blue_player.png</file>
+        <file>resistance.png</file>
         <file>die_basic.png</file>
+        <file>taoist_gods_favorite.png</file>
+        <file>taoist_neutral.png</file>
+        <file>taoist_second_wind.png</file>
+        <file>taoist_strength_of_the_mountain.png</file>
+        <file>die_extra.png</file>
     </qresource>
 </RCC>

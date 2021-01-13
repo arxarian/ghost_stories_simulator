@@ -3,10 +3,10 @@
 
 #include <QQmlEngine>
 
-const QMap<qint32, QUrl> Taoist = {{TaoistItem::Power::Neutral, QUrl("qrc:/images/blue_player.png")},
-                                   {TaoistItem::Power::SecondWind, QUrl("qrc:/images/blue_player.png")},
-                                   {TaoistItem::Power::StrengthOfTheMountain, QUrl("qrc:/images/blue_player.png")},
-                                   {TaoistItem::Power::GodsFavorite, QUrl("qrc:/images/blue_player.png")}};
+const QMap<qint32, QUrl> Taoist = {{TaoistItem::Power::Neutral, QUrl("qrc:/images/taoist_neutral.png")},
+                                   {TaoistItem::Power::SecondWind, QUrl("qrc:/images/taoist_second_wind.png")},
+                                   {TaoistItem::Power::StrengthOfTheMountain, QUrl("qrc:/images/taoist_strength_of_the_mountain.png")},
+                                   {TaoistItem::Power::GodsFavorite, QUrl("qrc:/images/taoist_gods_favorite.png")}};
 
 
 TaoistItem::TaoistItem(QObject* parent) : QObject(parent)

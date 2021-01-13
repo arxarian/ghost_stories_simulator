@@ -9,6 +9,7 @@ class TaoistItem;
 class TaoistModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(TaoistItem* selectedTaoist READ selectedTaoist WRITE setSelectedTaoist NOTIFY selectedTaoistChanged)
 
 public:
     enum Roles
@@ -25,11 +26,16 @@ public:
     Q_INVOKABLE virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
     Q_INVOKABLE virtual QHash<int, QByteArray> roleNames() const override;
 
+    TaoistItem* selectedTaoist() const;
+
+public slots:
+    void setSelectedTaoist(TaoistItem* selectedTaoist);
+
 signals:
+    void selectedTaoistChanged(TaoistItem* selectedTaoist);
 
 private:
     QList<TaoistItem*> m_arrItems;
 
-private slots:
-    //
+    TaoistItem* m_selectedTaoist = nullptr;
 };

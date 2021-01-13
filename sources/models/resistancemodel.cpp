@@ -4,7 +4,7 @@
 
 #include <QQmlEngine>
 
-constexpr qint32 MaxResistance = 3;
+constexpr qint32 MaxResistance = 4;
 
 ResistanceModel::ResistanceModel(QObject* parent) : QAbstractListModel(parent)
 {
@@ -13,6 +13,10 @@ ResistanceModel::ResistanceModel(QObject* parent) : QAbstractListModel(parent)
         m_arrItems.append(new ResistanceItem(this));
         connect(m_arrItems.last(), &ResistanceItem::selectedChanged, this, &ResistanceModel::updateResistance);
     }
+
+    m_arrItems.first()->setSelected(true);
+
+    updateResistance();
 }
 
 void ResistanceModel::DeclareQml()

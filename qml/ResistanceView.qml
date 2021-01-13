@@ -3,6 +3,7 @@ import QtQuick 2.15
 
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.0
 
 import Datamodels 1.0
 
@@ -27,24 +28,33 @@ Item {
             property real buttonSize: Math.min(resistanceView.width, resistanceView.height / resistanceView.count)
 
             model: resistanceModel
-            delegate: AbstractButton {
-                id: resistanceButton
+            delegate: Item {
+                id: wrapper
 
-                property ResistanceItem resistanceItem: model.object
+                property real size: Math.min(height, width) * 0.8
 
-                height: resistanceView.buttonSize
-                width: resistanceView.buttonSize
+                height: parent.height / resistanceView.count
+                width: parent.width
 
-                text: index
+                AbstractButton {
+                    id: resistanceButton
 
-                contentItem: Text {
-                    color: resistanceItem.selected ? "gold" : "red"
-                    text: resistanceButton.text
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
+                    property ResistanceItem resistanceItem: model.object
+
+                    anchors.centerIn: parent
+                    height: wrapper.size
+                    width: wrapper.size
+
+                    checked: resistanceButton.resistanceItem.selected
+
+                    contentItem: GlowingImage {
+                        source: resistanceButton.resistanceItem.image
+                        selected: resistanceButton.checked
+                        color: "#BB2222"
+                    }
+
+                    onClicked: resistanceButton.resistanceItem.onClicked()
                 }
-
-                onClicked: resistanceItem.onClicked()
             }
 
             Layout.fillHeight: true

@@ -3,6 +3,7 @@ import QtQuick 2.15
 
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.0
 
 import Datamodels 1.0
 
@@ -57,10 +58,24 @@ Item {
 
                     contentItem: Item {
                         Image {
+                            id: image
                             anchors.fill: parent
                             anchors.margins: parent.height * 0.2
                             source: diceButton.dieItem.image
+                            smooth: true
+                            mipmap: true
                             fillMode: Image.PreserveAspectFit
+                        }
+
+                        Glow {
+                            id: glow
+                            anchors.fill: image
+                            visible: diceButton.dieItem.selected
+                            radius: image.height * 0.3
+                            samples: 17
+                            color: "#1B84BD"
+                            source: image
+                            spread: 0.125
                         }
                     }
 

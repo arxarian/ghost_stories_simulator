@@ -4,7 +4,7 @@
 #include <QQmlEngine>
 
 const QMap<qint32, QUrl> Dice = {{DieItem::Type::Basic, QUrl("qrc:/images/die_basic.png")},
-                                 {DieItem::Type::Extra, QUrl("qrc:/images/die_basic.png")}};
+                                 {DieItem::Type::Extra, QUrl("qrc:/images/die_extra.png")}};
 
 
 DieItem::DieItem(QObject* parent) : QObject(parent)

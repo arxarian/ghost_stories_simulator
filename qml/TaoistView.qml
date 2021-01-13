@@ -43,33 +43,15 @@ Item {
                     height: wrapper.size
                     width: wrapper.size
 
-                    text: index
                     checked: taoistButton.taoistItem.selected
 
-                    contentItem: Item {
-                        Image {
-                            id: image
-                            anchors.fill: parent
-                            source: taoistButton.taoistItem.image
-                            smooth: true
-                            mipmap: true
-                            fillMode: Image.PreserveAspectFit
-                        }
-
-                        Glow {
-                            id: glow
-                            anchors.fill: image
-                            visible: taoistButton.taoistItem.selected
-                            radius: image.height * 0.3
-                            samples: 17
-                            color: "#1B84BD"
-                            source: image
-                            spread: 0.125
-
-                        }
+                    contentItem: GlowingImage {
+                        source: taoistButton.taoistItem.image
+                        selected: taoistModel.selectedTaoist === taoistButton.taoistItem
+                        color: "#1B84BD"
                     }
 
-                    onClicked: taoistButton.taoistItem.onClicked()
+                    onClicked: taoistModel.selectedTaoist = taoistButton.taoistItem
                 }
             }
 

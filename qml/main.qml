@@ -50,7 +50,7 @@ Window {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pixelSize: 22
-            text: qsTr("You shall not pass")
+            text: chancesModel.chance === 0 ? qsTr("You shall not pass") : qsTr("Your chance is %1 %").arg(chancesModel.chance)
 
             Layout.preferredHeight: parent.height * 0.1
             Layout.fillWidth: true

@@ -4,6 +4,7 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += \
+    sources/models/chancesmodel.cpp \
     sources/models/resistancemodel.cpp \
     sources/models/dicemodel.cpp \
     sources/models/taoistmodel.cpp \
@@ -13,6 +14,7 @@ SOURCES += \
     sources/main.cpp
 
 HEADERS += \
+    sources/models/chancesmodel.h \
     sources/models/resistancemodel.h \
     sources/models/dicemodel.h \
     sources/models/taoistmodel.h \
