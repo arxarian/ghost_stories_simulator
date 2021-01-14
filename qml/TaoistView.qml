@@ -16,7 +16,7 @@ Item {
             verticalAlignment: Text.AlignVCenter
             color: "white"
             text: qsTr("I am")
-            font.pixelSize: 22
+            font.pixelSize: height * 0.5
 
             Layout.preferredHeight: parent.height * 0.1
             Layout.fillWidth: true
@@ -25,13 +25,14 @@ Item {
         ListView {
             id: taoisView
 
+            interactive: false
             model: taoistModel
             delegate: Item {
                 id: wrapper
 
                 property real size: Math.min(height, width) * 0.8
 
-                height: parent.height / taoisView.count
+                height: taoisView.height / taoisView.count
                 width: parent.width
 
                 AbstractButton {

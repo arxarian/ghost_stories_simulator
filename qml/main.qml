@@ -49,7 +49,8 @@ Window {
             color: "white"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: 22
+            font.pixelSize: height * 0.3
+            font.bold: true
             text: {
                 if (chancesModel.chance === 0) {
                     return qsTr("You shall not pass")
