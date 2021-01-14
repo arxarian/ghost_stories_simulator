@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/images">
-        <file>logo.png</file>
-        <file>blueability.png</file>
-        <file>blue_player.png</file>
-    </qresource>
-</RCC>

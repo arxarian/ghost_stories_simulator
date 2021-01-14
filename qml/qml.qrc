@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ResistanceView.qml</file>
+        <file>DiceView.qml</file>
+        <file>TaoistView.qml</file>
+        <file>GlowingImage.qml</file>
+    </qresource>
+</RCC>
