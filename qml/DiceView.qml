@@ -16,7 +16,7 @@ Item {
             verticalAlignment: Text.AlignVCenter
             color: "white"
             text: qsTr("I roll")
-            font.pixelSize: height * 0.5
+            font.pixelSize: Layout.preferredHeight * 0.5
 
             Layout.preferredHeight: parent.height * 0.1
             Layout.fillWidth: true

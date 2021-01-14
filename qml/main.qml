@@ -49,7 +49,7 @@ Window {
             color: "white"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            font.pixelSize: height * 0.3
+            font.pixelSize: Layout.preferredHeight * 0.3
             font.bold: true
             text: {
                 if (chancesModel.chance === 0) {
