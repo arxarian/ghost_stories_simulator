@@ -11,10 +11,9 @@ DiceModel::DiceModel(QObject* parent) : QAbstractListModel(parent)
     for (qint32 i = 0; i < MaxDice; ++i)
     {
         m_arrItems.append(new DieItem(DieItem::Type::Basic, this));
+        m_arrItems.last()->setSelected(true);
         connect(m_arrItems.last(), &DieItem::selectedChanged, this, &DiceModel::updateDice);
     }
-
-    m_arrItems.first()->setSelected(true);
 
     m_arrItems.append(new DieItem(DieItem::Type::Extra, this));
     connect(m_arrItems.last(), &DieItem::selectedChanged, this, &DiceModel::updateDice);
@@ -75,14 +74,11 @@ void DiceModel::setExtraDie(bool extraDie)
     m_extraDie = extraDie;
     emit extraDieChanged(m_extraDie);
 
-    if (!m_extraDie)
+    for (DieItem* die : m_arrItems)
     {
-        for (DieItem* die : m_arrItems)
+        if (die->type() == DieItem::Type::Extra)
         {
-            if (die->type() == DieItem::Type::Extra)
-            {
-                die->setSelected(false);
-            }
+            die->setSelected(m_extraDie);
         }
     }
 }
