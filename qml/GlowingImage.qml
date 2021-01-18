@@ -13,7 +13,7 @@ Item {
     Image {
         id: image
         anchors.fill: parent
-        opacity: 0.7
+        opacity: 0.5
         source: root.source
         smooth: true
         mipmap: true
