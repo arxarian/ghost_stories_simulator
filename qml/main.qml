@@ -53,11 +53,11 @@ Window {
             font.bold: true
             text: {
                 if (chancesModel.chance === 0) {
-                    return qsTr("You shall not pass")
+                    return qsTr("I shall not pass")
                 } else if (chancesModel.chance === 100) {
-                    return qsTr("It's a cakewalk")
+                    return qsTr("It's a peace of cake")
                 } else {
-                    return qsTr("Your chance is %1 %").arg(chancesModel.chance)
+                    return qsTr("My chance is %1 %").arg(chancesModel.chance)
                 }
             }
 
